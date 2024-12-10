@@ -4,7 +4,7 @@ import FoldersSidebarSection from "./FoldersSidebarSection.svelte";
 
 </script>
 <div
-  class="flex flex-col gap-8 mt-10 w-full" 
+  class="flex flex-col gap-8 mt-10 w-full " 
 >
   <FoldersSidebarSection title="Folders">
     <FolderSidebarItem

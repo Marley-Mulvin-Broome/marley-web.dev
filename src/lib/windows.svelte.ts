@@ -11,11 +11,15 @@ interface DesktopWindow {
   pin: boolean;
 }
 
+type SupportedLanguages = 'en' | 'ja';
+
 interface WindowsData {
   windows: DesktopWindow[];
   fullscreen: boolean;
   breadcrums: Breadcrum[]; 
+  language: SupportedLanguages;
 }
+
 
 export const windows: WindowsData = $state({
   windows: [
@@ -28,5 +32,6 @@ export const windows: WindowsData = $state({
     },
   ],
   breadcrums: [],
-  fullscreen: false
+  fullscreen: false,
+  language: 'en'
 })

@@ -1,0 +1,221 @@
+---
+title: How to generate a frequency list of Japanese words in Python
+description: Were you ever reading a Japanese novel and wanted to know which words you should learn first? Here's how to generate a frequency list of Japanese words in Python.
+date: '2023-10-17'
+lastUpdate: '2023-10-17'
+tags:
+  - Japanese Learning
+  - Python
+  - Language Learning
+category: Tutorial
+img: /articles/japanese-frequency-list.png
+published: true
+---
+
+## The goal
+
+Over a year ago, I was reading a novel from '[小説家になろう](https://syosetu.com/)', and noticed a lot of words I definitely couldn't understand. Reflecting on this, I wrote a quick python module to analyse the frequency of text. Not until recently have I actually made this module publicly available, which you can get from [pip](https://pypi.org/project/JPFreq/0.1.0/).
+
+You can see the final version of this code on GitHub [here](https://gist.github.com/Marley-Mulvin-Broome/762c35ea1339179a1742ebffc139da42)!
+
+## Table of Contents
+
+## Dependencies & Assumptions
+
+Before we start, I'm assuming you have some basic programming knowledge and experience. If not, this tutorial may be hard to understand. Additionally, I'll be running this program on my linux machine, meaning if you are running on windows your shell commands might be different. If this is the case, I recommend you install [wsl](https://learn.microsoft.com/en-us/windows/wsl/install), which allows you to run a linux environment on windows! Trust me, it's much better than cmd and powershell.
+
+For this project you are going to need the following requirements:
+
+- [Python3.10](https://www.python.org/downloads/) or greater.
+- [Pip](https://pip.pypa.io/en/stable/installation/), generally comes installed with Python.
+
+
+## What we are actually building
+
+We are going to be building a basic application which reads in a list of files from the commandline. It will then list every word alongside their frequency onto the commandline. Here is what the program would like like in practice:
+
+```bash
+$ ./freq.py small-text.txt
+2,猫
+1,犬
+$ ./freq.py novel.txt > results.csv
+$ head results.csv
+84,為る
+74,居る
+48,事
+45,言う
+32,人
+29,無い
+28,様
+28,迷い
+23,能力
+22,来る
+```
+
+## Setting up the project
+
+First we are going to make a new directory for our project, and install the packages we need. For today, we will be using `jpfreq` and `fugashi`.
+
+```bash
+# make our project dir
+$ mkdir frequencyListTutorial
+$ cd frequencyListTutorial
+# create our python file, giving it execution permissions
+$ echo '#!/usr/bin/env python3' > freq.py
+$ chmod +x freq.py
+# install our dependencies
+$ pip install fugashi[unidic] jpfreq
+# install the japanese dictionary
+$ python3 -m unidic download
+# test our file runs without any errors
+$ ./freq.py
+```
+
+Once you have set the project up, you're ready to actually start writing some code!
+
+## Parsing text
+
+```python
+#!/usr/bin/env python3
+
+from jpfreq.jp_frequency_list import JapaneseFrequencyList
+
+freq_list = JapaneseFrequencyList()
+
+freq_list.process_line("吾輩は猫である")
+
+print(freq_list.get_most_frequent())
+
+```
+
+This snippet prints to the screen the most frequent words in the text "吾輩は猫である". But how does it work? Lets break it down.
+
+- In this snippet, we are loading the `JapaneseFrequencyList` class and initialising it. This class holds information on the frequency of Japanese words it has processed, and holds them in a list of classes called `WordSlot`.
+- We then get it to parse a line of text, counting the occurance of each word.
+- Finally, we use the `get_most_frequent` function to extract the most frequenct words, and then print that to the screen.
+
+This is what the output of this program looks like:
+
+```bash
+$ ./freq.py
+[WordSlot(words=[Word(representation='我が輩', surface='吾輩', types=[<WordType.PRONOUN: '代名詞'>], frequency=1)]), WordSlot(words=[Word(representation='猫', surface='猫', types=[<WordType.NOUN: '名詞'>, <WordType.COMMON_NOUN: '普通名詞'>, <WordType.GENERAL: '一般'>], frequency=1)]), WordSlot(words=[Word(representation='有る', surface='ある', types=[<WordType.VERB: '動詞'>, <WordType.UNINDEPENDENT: '非自立可能'>], frequency=1)])]
+```
+
+Not very pretty is it? Well, lets get to fixing that
+
+### Making the output more readable
+
+```python
+#!/usr/bin/env python3
+
+from jpfreq.jp_frequency_list import JapaneseFrequencyList
+
+freq_list = JapaneseFrequencyList()
+
+freq_list.process_line("吾輩は猫である")
+
+for word in freq_list.get_most_frequent():
+        print(f"{word.frequency},{word.words[0].surface}")
+```
+
+With this added for loop at the end of our script, we can print each word out with their frequency, seperated by comma.
+
+- Note: we are accessing word.words\[0\], which is necesary as each word has multiple 'words' within it. (Yes crazy, I know). But this is because each word has various ways it can be represented. For example, ’ある', can also be represented as '有る'. To use the common representation, use `.representation` instead of `.surface`.
+
+This is what the output looks like:
+
+```bash
+$ ./freq.py
+1,吾輩
+1,猫
+1,ある
+```
+
+## Reading from file(s)
+
+```python
+#!/usr/bin/env python3
+
+from jpfreq.jp_frequency_list import JapaneseFrequencyList
+
+freq_list = JapaneseFrequencyList()
+
+files = ["test.txt"]
+
+for file in files:
+        freq_list.process_file(file)
+
+for word in freq_list.get_most_frequent():
+        print(f"{word.frequency},{word.words[0].representation}")
+
+```
+
+To make it easy for us, the JapaneseFrequencyList has an option to load a file for us! This is great, as we can easily iterate over a list of files and process them.
+
+We can test it out to see it working like before:
+
+```bash
+$ echo "吾輩は猫である" > test.txt
+$ ./freq.py
+1,吾輩
+1,猫
+1,ある
+```
+
+## Getting command line arguments
+
+```python
+#!/usr/bin/env python3
+
+from jpfreq.jp_frequency_list import JapaneseFrequencyList
+from sys import argv
+
+freq_list = JapaneseFrequencyList()
+
+files = argv[1:]
+
+for file in files:
+        freq_list.process_file(file)
+
+for word in freq_list.get_most_frequent():
+        print(f"{word.frequency},{word.words[0].representation}")
+
+```
+
+Getting command line arguments in python is extremely easy, we simply import `argv` and get all the arguments from, and including, the second item. (We must ignore the first item as that is the name of our program). With this, we can just integrate it into our code seemlessly for the same output as before.
+
+## The finished product
+
+Now, now lets try analysing an actual novel, and see how we go!
+I copy and pasted the page contents from [this novel chapter](https://ncode.syosetu.com/n3803ik/1/) and saved it to a file called `novel.txt`
+
+```bash
+$ ./freq novel.txt > results.csv
+head results.csv
+84,為る
+74,居る
+48,事
+45,言う
+32,人
+29,無い
+28,様
+28,迷い
+23,能力
+22,来る
+# get the results without the frequency
+$ head results.csv | cut -d, -f2
+為る
+居る
+事
+言う
+人
+無い
+様
+迷い
+能力
+来る
+```
+
+## Conclusion
+
+Using the [JPFreq](https://pypi.org/project/JPFreq/0.1.0/) Python library, we have extracted the frequency from text, and outputted into csv format. This is useful if you're studying Japanese and want to learn the common words for certain pieces of literature like novels, movies, anime, etc. Please share this article if you thought it was helpful, and as always, happy hacking!

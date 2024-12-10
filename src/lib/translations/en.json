@@ -1,0 +1,94 @@
+{
+    "meta": {
+        "home": {
+            "title": "Marley Mulvin Broome",
+            "description": "Software Engineer & Sigma Male based in Osaka, Japan",
+            "image": "/marley.png"
+        },
+        "folders": {
+            "title": "Marleys Folders",
+            "description": "Software Engineer & Sigma Male based in Osaka, Japan",
+            "image": "/marley.png"
+        },
+        "projects": {
+            "title": "Marleys Projects",
+            "description": "See Marley Mulvin Broome's software projects",
+            "image": "/marley.png"
+        }
+    },
+    "home": {
+        "title": "Hi, I'm Marley",
+        "description": "Software Engineer & Sigma Male based in Osaka, Japan",
+        "search": "Search",
+        "about-me": "About Me",
+        "projects": "Projects",
+        "articles": "Articles"
+    },
+    "home-call": {
+        "description": "A solution for nursing home visitations, bookings, and short stays.",
+        "interested": "Interested? Check out the <a class=\"text-accent font-semibold\" target=\"_blank\" rel=\"noopener noreferrer\"  href=\"https://www.home-call.app\">home page.</a>",
+        "tech-stack": "Tech Stack",
+        "tech-stack-description": "Home call has two product versions: a cloud and a desktop version. The cloud version is currently the only version which will be supported in the future, but a legacy desktop version was and still is in use by some users.",
+        "cloud-version": "Cloud Version",
+        "desktop-version": "Desktop Version"
+    },
+    "projects": {
+        "home-call": "Home Call",
+        "short-it": "Short It",
+        "secret": "Secret"
+    },
+    "about": {
+        "description": "I've been programming since I was 12 years old, and sadly don't seem to be stopping anytime soon. I'm currently not looking for a job, feel free to contact me if you're interested.",
+        "working-on": "Currently Working On",
+        "timeline": {
+            "title": "Timeline",
+            "exchange": {
+                "title": "Exchange to Kyoto University",
+                "description": "Started my half year exchange program at Kyoto University, Japan, where I majored in Computer Science.",
+                "date": "2024-10-01"
+            },
+            "familye": {
+                "title": "Joined Familiye",
+                "description": "After building homecall, a product that helps nursing homes manage visitations, I started working at Familiye to further develop the product as a cloud-based solution.",
+                "date": "2024-11"
+            },
+            "pactom": {
+                "title": "Co-Founded Pactom",
+                "description": "Alongside one of my friends I met through the various hackathons and meetups, we founded Pactom, a startup that aims to innovate the SaaS sales process through live demos. As CTO, I managed a team of over 5 engineers, designing the product and building the early MVPs.",
+                "date": "2024-04"
+            },
+            "jlpt": {
+                "title": "Passed JLPT N1",
+                "description": "To be allowed to study at Kyoto university, I had to pass the Japanese Language Proficiency Test (JLPT) N1 level. Even though it was my first time ever taking the JLPT, I managed to pass it at only the age of 19.",
+                "date": "2023-07"
+            },
+            "freelance": {
+                "title": "Began Freelance Software Work",
+                "description": "From the start of 2023, I began accepting work from various clients ranging from small marketing agencies to large healthcare facilities.",
+                "date": "2023"
+            },
+            "unsw": {
+                "title": "Started studying at UNSW",
+                "description": "I started studying a bachelors of Computer Science at The University of New South Wales, Sydney.",
+                "date": "2022-09"
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send",
+        "success": "Message sent 🎉",
+        "error": "Something went wrong ☹️",
+        "try-again": "Try again",
+        "invalid-email": "Invalid email address!",
+        "invalid-name": "Tell me your name!"
+    },
+    "articles": {
+        "name": "Name",
+        "category": "Category",
+        "time-posted": "Time Posted"
+    }
+}

@@ -1,25 +1,25 @@
 <script lang="ts">
+	import { breadcrums } from "$lib";
 	import ProjectItem from "$lib/components/desktop-window/ProjectItem.svelte";
+	import Meta from "$lib/components/Meta.svelte";
+	import { t } from "$lib/translations";
 import { windows } from "$lib/windows.svelte";
 	import { onMount } from "svelte";
 
   onMount(() => {
-    windows.breadcrums = [
-      {
-        title: 'Folders',
-        href: '/folders'
-      },
-      {
-        title: 'Projects',
-      }
-    ]
+    windows.breadcrums = breadcrums.projects;
   })
 </script>
+<Meta
+	title={$t('common.meta.projects.title')}
+	description={$t('common.meta.projects.description')}
+	image={$t('common.meta.projects.image')}
+/>
 
 <div
-  class="flex flex-row flex-wrap gap-4 items-center pt-2"
+  class="flex flex-row flex-wrap gap-4 items-center pt-8 lg:pt-2 justify-center lg:justify-start"
 >
-  {#snippet project(title, href, img)}
+  {#snippet project(title: string, href: string, img: string)}
     <ProjectItem 
       {title}
       {href}
@@ -27,7 +27,6 @@ import { windows } from "$lib/windows.svelte";
     />
   {/snippet}
 
-  {@render project("Home Call", "/folders/projects/home-call", "/projects/home-call.png")}
-  {@render project("Short It", "/folders/projects/short-it", "/projects/short-it.svg")}
-  {@render project("Pactom DeMo", "/folders/projects/pactom-demo", "/projects/pactom-demo.svg")}
+  {@render project($t('common.projects.home-call'), "/folders/projects/home-call", "/projects/home-call.png")}
+  {@render project($t('common.projects.short-it'), "/folders/projects/short-it", "/projects/short-it.svg")}
 </div>

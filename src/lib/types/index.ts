@@ -9,3 +9,11 @@ export interface SearchIndexItem {
   content: string;
   type: SearchIndexItemType;
 }
+
+export type BreadcrumKey = "projects" | "folders" | "articles" | "about" | "contact";
+
+export interface ContactBody {
+  name: string;
+  email: string;
+  message: string;
+}

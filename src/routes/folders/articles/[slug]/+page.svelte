@@ -4,6 +4,8 @@
 	import type { PageData } from "./$types";
 	import { windows } from "$lib/windows.svelte";
 	import Avatar from "$lib/components/Avatar.svelte";
+	import { breadcrums } from "$lib";
+	import Meta from "$lib/components/Meta.svelte";
 
   interface Props {
     data: PageData
@@ -21,14 +23,7 @@
     windows.fullscreen = true;
 
     windows.breadcrums = [
-      {
-        title: 'Folders',
-        href: '/folders'
-      },
-      {
-        title: 'Articles',
-        href: '/folders/articles'
-      },
+      ...breadcrums.articles,
       {
         title: article.meta.title,
       }
@@ -36,8 +31,14 @@
   })
 </script>
 
+<Meta 
+  description={article.meta.description}
+  title={article.meta.title}
+  image={article.meta.img}
+  type="article"
+/>
 
-<article class="prose px-6 py-4 overflow-y-scroll max-h-full flex flex-col justify-center self-center w-full">
+<article class="prose px-2 lg:px-6 py-4 overflow-y-scroll max-h-full flex flex-col justify-center self-center w-full">
   <h1 class="text-3xl font-bold mb-4">{article.meta.title}</h1>
 
   <div

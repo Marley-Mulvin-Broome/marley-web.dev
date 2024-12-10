@@ -13,7 +13,7 @@
   {/snippet}
 
   <div
-    class="w-[800px]"
+    class="lg:w-[800px]"
   >
     {@render children()}
   </div>

@@ -6,13 +6,21 @@
   }
 
   let { breadcrums }: Props = $props();
+
+  const getLink = (item: Breadcrum, i: number) => {
+    if (i === breadcrums.length - 1) {
+      return "javascript:void(0)";
+    }
+
+    return item.href;
+  };
 </script>
 
 <div
   class="flex flex-row gap-2 items-center text-gray-400"
 >
   {#each breadcrums as item, i}
-    <a href={item.href} class="">
+    <a href={getLink(item, i)} class="data-[clickable=true]:hover:underline data-[clickable=false]:cursor-default line-clamp-1 max-w-[100px] lg:max-w-none" data-clickable={i !== breadcrums.length - 1}>
       {item.title}
     </a>
 

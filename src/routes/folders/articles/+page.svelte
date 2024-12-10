@@ -4,6 +4,8 @@
 import { windows } from "$lib/windows.svelte";
 	import { onMount } from "svelte";
 	import type { PageData } from "./$types";
+	import { breadcrums } from "$lib";
+	import { t } from "$lib/translations";
 
   interface Props {
     data: PageData
@@ -12,15 +14,7 @@ import { windows } from "$lib/windows.svelte";
   let { data }: Props = $props();
 
   onMount(() => {
-    windows.breadcrums = [
-      {
-        title: 'Folders',
-        href: '/folders'
-      },
-      {
-        title: 'Articles',
-      }
-    ]
+    windows.breadcrums = breadcrums.articles
   });
 </script>
 
@@ -30,19 +24,19 @@ import { windows } from "$lib/windows.svelte";
   <ArticleColumnHeader
     class="col-span-3"
   >
-    Name
+    {$t('common.articles.name')}
   </ArticleColumnHeader>
 
   <ArticleColumnHeader
     class="col-span-2"
   >
-    Category
+    {$t('common.articles.category')}
   </ArticleColumnHeader>
 
   <ArticleColumnHeader
     class="col-span-1"
   >
-    Time Posted
+    {$t('common.articles.time-posted')}
   </ArticleColumnHeader>
 </div>
 

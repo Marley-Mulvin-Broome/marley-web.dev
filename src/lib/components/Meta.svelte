@@ -6,12 +6,13 @@
     title: string;
     description: string;
     image?: string;
+    type?: string;
   }
 
   
   const canonicalURL = new URL($page.url.pathname, config.site);
 
-  const { title, description, image = '/blog-placeholder-1.jpg' }: Props = $props();
+  const { title, description, type, image = '/marley.png' }: Props = $props();
 </script>
 
 
@@ -30,7 +31,7 @@
   <meta name="description" content={description} />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={type ?? 'website'} />
   <meta property="og:url" content={$page.url.toString()} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />

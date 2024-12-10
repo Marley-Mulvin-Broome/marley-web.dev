@@ -15,7 +15,7 @@ export default {
 				}
 			},
 			fontFamily: {
-				'sans': ['inter'],
+				'sans': ['inter', 'noto-sans'],
 				'mono': ['ubuntu-mono', 'ui-monospace']
 			},
 			fontSize: {

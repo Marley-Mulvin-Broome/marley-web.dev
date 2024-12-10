@@ -9,6 +9,11 @@
     }
 
     @font-face {
+        font-family: 'noto-sans';
+        src: url(/fonts/noto-sans.ttf);
+    }
+
+    @font-face {
         font-family: 'ubuntu-mono';
         src: url(/fonts/ubuntu-mono-regular.ttf);
     }
@@ -78,8 +83,10 @@
 code {
     counter-reset: step;
     counter-increment: step 0;
+}
 
-    
+code .line {
+    text-wrap: wrap;
 }
 
 code:not(:has(.line)) {

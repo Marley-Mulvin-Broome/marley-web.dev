@@ -5,15 +5,15 @@
 	import type { Breadcrum } from "$lib/types";
 
   interface Props {
-    fullscreen: boolean;
+    fullscreen?: boolean;
     children: Snippet;
-    sidebar: Snippet;
-    breadcrums: Breadcrum[];
+    sidebar?: Snippet;
+    breadcrums?: Breadcrum[];
     x: number;
     y: number;
   }
 
-  let { fullscreen = $bindable(), children, x = $bindable(), y = $bindable(), sidebar, breadcrums  }: Props = $props();
+  let { fullscreen = $bindable(false), children, x = $bindable(), y = $bindable(), sidebar, breadcrums = []  }: Props = $props();
 </script>
 
 <div  
@@ -23,14 +23,14 @@
   data-fullscreen={fullscreen}>
 
   <div
-    class="flex flex-col w-[200px]  items-start border-r border-gray-600"
+    class="hidden lg:flex flex-col w-[200px]  items-start border-r border-gray-600"
   >
     <DesktopWindowTitlebarControls onmaximize={() => (fullscreen = !fullscreen)} />
 
     {@render sidebar?.()}
   </div>
 
-  <div class="flex flex-col flex-1 overflow-y-scroll max-h-[600px] bg-primary">
+  <div class="flex flex-col flex-1 overflow-y-scroll lg:max-h-[600px] bg-primary">
     <div class="w-full px-4 py-2 border-b border-gray-600 bg-primary-light">
         <WindowBreadcrums 
           {breadcrums}
