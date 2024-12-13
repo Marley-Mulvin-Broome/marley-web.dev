@@ -17,7 +17,7 @@ import { windows } from "$lib/windows.svelte";
 />
 
 <div
-  class="flex flex-row flex-wrap gap-4 items-center pt-8 lg:pt-2 justify-center lg:justify-start"
+  class="flex flex-row flex-wrap gap-4 items-center pt-8 justify-center lg:justify-between lg:px-4"
 >
   {#snippet project(title: string, href: string, img: string)}
     <ProjectItem 
@@ -28,5 +28,10 @@ import { windows } from "$lib/windows.svelte";
   {/snippet}
 
   {@render project($t('common.projects.home-call'), "/folders/projects/home-call", "/projects/home-call.png")}
-  {@render project($t('common.projects.short-it'), "/folders/projects/short-it", "/projects/short-it.svg")}
+ 
+  {@render project($t('common.projects.omnia'), "/folders/projects/omnia", "/projects/omnia.png")}
+  {@render project($t('common.projects.jpfreq'), "/folders/projects/jpfreq", "/projects/jpfreq.png")}
+  {@render project($t('common.projects.electron-timer'), "/folders/projects/electron-timer", "/projects/electron-timer.png")}
+   {@render project($t('common.projects.short-it'), "/folders/projects/short-it", "/projects/penguin.gif")}
+  {@render project($t('common.projects.other'), "/folders/projects/other", "/projects/other.png")}
 </div>

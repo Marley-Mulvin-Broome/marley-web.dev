@@ -40,7 +40,7 @@ import Avatar from "./Avatar.svelte";
 		>
 
 			{#each $locales as supportedLocale}
-				<button onclick={() => { localeClicked(supportedLocale) }} class="text-sm text-gray-400 data-[selected=true]:font-bold data-[selected=false]:underline cursor-pointer" data-selected={$locale === supportedLocale}>
+				<button onclick={() => { localeClicked(supportedLocale) }} class="text-sm text-gray-400 data-[selected=true]:font-bold data-[selected=false]:underline cursor-default data-[selected=false]:cursor-pointer" data-selected={$locale === supportedLocale}>
 					{$t(`lang.${supportedLocale}`)}
 				</button>
 			{/each}

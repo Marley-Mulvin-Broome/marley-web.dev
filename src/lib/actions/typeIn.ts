@@ -28,7 +28,6 @@ export const typeIn = (
     if (index === text.length) {
       clearInterval(intervalId);
       blinking?.set(true);
-      console.log("BLINK NOW!")
     }
   }, interval);
 

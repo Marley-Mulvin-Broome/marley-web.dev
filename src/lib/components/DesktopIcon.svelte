@@ -1,11 +1,14 @@
 <script lang="ts">
+	import type { Snippet } from "svelte";
+
  interface Props {
     name: string;
-    type: 'file' | 'folder';
+    type: 'file' | 'folder' | 'custom';
     href?: string;
+    children?: Snippet;
  }
 
- const { name, type, href = '#' }: Props = $props();
+ const { name, type, children, href = '#' }: Props = $props();
 
 </script>
 
@@ -22,6 +25,8 @@
       <svg class="w-[60px] h-[60px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
       <path fill="currentColor" d="M216 72h-84.69L104 44.69A15.88 15.88 0 0 0 92.69 40H40a16 16 0 0 0-16 16v144.62A15.41 15.41 0 0 0 39.39 216h177.5A15.13 15.13 0 0 0 232 200.89V88a16 16 0 0 0-16-16M40 56h52.69l16 16H40Z" />
    </svg>
+   {:else if type === 'custom'}
+      {@render children?.()}
    {/if}
 
    <span

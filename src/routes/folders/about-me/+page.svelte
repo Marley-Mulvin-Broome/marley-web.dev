@@ -53,13 +53,13 @@ import { windows } from "$lib/windows.svelte";
       <ProjectItem 
         title={$t('common.projects.short-it')}
         href="/folders/projects/short-it"
-        img="/projects/short-it.svg"
+        img="/projects/penguin.gif"
       />
 
       <ProjectItem 
         title={$t('common.projects.secret')}
         href=""
-        img="/projects/pactom-demo.svg"
+        img="/projects/study.gif"
       />
     </div>
     
