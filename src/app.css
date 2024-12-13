@@ -28,7 +28,7 @@
 }
 
 .prose :is(a) {
-    
+    @apply text-accent;
 }
 
 .prose :is(p) {
@@ -36,8 +36,16 @@
     /* font-size: 1.125rem; */
 }
 
+.prose :is(em) {
+    @apply italic;
+}
+
+.prose :is(strong) {
+    @apply font-semibold;
+}
+
 .prose :is(h2, h3, h4, h5, h6) {
-    @apply mt-8 mb-2 font-semibold;
+    @apply mt-8 mb-4 font-semibold;
 }
 
 .prose :is(h2) {
@@ -61,12 +69,12 @@
 }
 
 .prose p:not(:is(h2, h3, h4, h5, h6) + p) {
-    @apply mt-2;
+    @apply mt-6;
 }
 
 .prose :is(ul, ol) {
     list-style-type: '🔥';
-    @apply pl-4 mb-2;
+    @apply pl-4 mt-2;
 }
 
 .prose :is(ul, ol) > li {

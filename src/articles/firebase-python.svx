@@ -61,7 +61,7 @@ firebase emulators:start
 ```
 
 This will start the emulator suite, and you should see something like this:
-![Firebase Emulator Suite](/img/posts/firebase-emulator-suite.png)
+![Firebase Emulator Suite](/articles/imgs/firebase-emulator-suite.png)
 
 Take note of the ports (and url) that the emulators are running on, as you'll need them later.
 

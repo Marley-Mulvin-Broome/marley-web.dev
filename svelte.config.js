@@ -2,6 +2,9 @@ import { escapeSvelte, mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { createHighlighter } from 'shiki';
+import remarkToc from 'remark-toc';
+import remarkUnwrapImages from 'remark-unwrap-images';
+import rehypeSlug from 'rehype-slug';
 
 const theme = 'github-dark';
 
@@ -15,6 +18,8 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`;
 		}
 	},
+	rehypePlugins: [rehypeSlug],
+	remarkPlugins: [remarkToc, remarkUnwrapImages],
 }
 
 /** @type {import('@sveltejs/kit').Config} */
