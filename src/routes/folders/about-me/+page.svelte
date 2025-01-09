@@ -42,7 +42,7 @@ import { windows } from "$lib/windows.svelte";
     </h2>
 
     <div
-      class="flex flex-row flex-wrap justify-center lg:justify-between"
+      class="flex flex-row flex-wrap justify-center lg:justify-start lg:gap-20"
     >
       <ProjectItem 
         title={$t('common.projects.home-call')}
@@ -54,12 +54,6 @@ import { windows } from "$lib/windows.svelte";
         title={$t('common.projects.short-it')}
         href="/folders/projects/short-it"
         img="/projects/penguin.gif"
-      />
-
-      <ProjectItem 
-        title={$t('common.projects.secret')}
-        href=""
-        img="/projects/study.gif"
       />
     </div>
     
@@ -92,6 +86,8 @@ import { windows } from "$lib/windows.svelte";
           </p>
         </div>
       {/snippet}
+
+      {@render item($t('common.about.timeline.jouhou-exam.title'), $t('common.about.timeline.jouhou-exam.date'), $t('common.about.timeline.jouhou-exam.description'))}
 
       {@render item($t('common.about.timeline.exchange.title'), $t('common.about.timeline.exchange.date'), $t('common.about.timeline.exchange.description'))}
 

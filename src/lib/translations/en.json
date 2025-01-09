@@ -95,6 +95,11 @@
         "working-on": "Currently Working On",
         "timeline": {
             "title": "Timeline",
+            "jouhou-exam": {
+                "title": "Passed Basic Information Technology Engineer Examination",
+                "description": "With only 10 days of study, I obtained the 'Basic Information Technology Engineer' qualification.",
+                "date": "2024-12-19"
+            },
             "exchange": {
                 "title": "Exchange to Kyoto University",
                 "description": "Started my half year exchange program at Kyoto University, Japan, where I majored in Computer Science.",
