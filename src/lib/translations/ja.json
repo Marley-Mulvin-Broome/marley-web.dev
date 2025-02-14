@@ -1,152 +1,152 @@
 {
-    "back": "戻る",
-    "snake": {
-        "game-over": "ゲームオーバー。もう一度プレイしますか？"
-    },
-    "meta": {
-        "home": {
-            "title": "マーリー・モルヴィン・ブルーム",
-            "description": "大阪を拠点としたソフトウェアエンジニア",
-            "image": "/marley.png"
-        },
-        "folders": {
-            "title": "マーリーのフォルダー",
-            "description": "大阪を拠点としたソフトウェアエンジニア",
-            "image": "/marley.png"
-        },
-        "projects": {
-            "title": "マーリーのプロジェクト",
-            "description": "大阪を拠点としたソフトウェアエンジニアのプロジェクト一覧",
-            "image": "/marley.png"
-        }
-    },
-    "home": {
-        "title": "Hi, I'm Marley",
-        "description": "大阪を拠点としたソフトウェアエンジニア",
-        "search": "検索",
-        "about-me": "私について",
-        "projects": "プロジェクト",
-        "articles": "ブログ",
-        "snake": "スネーク"
-    },
-    "home-call": {
-        "description": "介護施設の受付業務や予約管理を効率化するツール。",
-        "interested": "興味がありますか？ <a class=\"text-accent font-semibold\" target=\"_blank\" rel=\"noopener noreferrer\"  href=\"https://www.home-call.app\">ホームページ</a> をチェックしてください。",
-        "tech-stack": "技術スタック",
-        "tech-stack-description": "ホームコールにはクラウド版とデスクトップ版の2つの製品バージョンがあります。将来的にはクラウド版のみがサポートされますが、一部のユーザーは依然としてデスクトップ版を使用しています。",
-        "cloud-version": "クラウド版",
-        "desktop-version": "デスクトップ版",
-        "data-management-title": "データ管理",
-        "data-management-content": "ホームコールは、介護施設の訪問者、入居者、予約、訪問履歴などに関する情報を管理するために、リレーショナルデータベースを使用しています。",
-        "notifications-title": "通知",
-        "notifications-content": "デスクトップアプリケーションはローカルネットワークにサーバーを公開することで、クライアントがWebSocket経由で通知を受け取ることができるようにしています。さらに、サーバーはチェックインや通知の受信を行うためのウェブサイトも公開しています。また、通知を受け取るための専用クライアントもあります。",
-        "updates-title": "自動アップデート",
-        "updates-description": "デスクトップアプリケーションは、新しいリリースがプライベートリリースリポジトリにプッシュされると自動的にアップデートされます。これにより、ユーザーは安全でスムーズにアップデートをすることができます。"
-    },
-    "short-it": {
-        "title": "Short It",
-        "description": " シンプルで使いやすいURL短縮ツール",
-        "interested": "興味がありますか? まだ開発中なので、数週間後に戻ってきてください、、、",
-        "tech-stack": "技術スタック",
-        "tech-stack-description": "Short-itは主にフロントエンドとバックエンドの2つの主要なサービスに分かれています。フロントエンドはSvelteKitアプリケーションで、バックエンドはGolangアプリケーションです。",
-        "technologies": "技術"
-    },
-    "omnia": {
-        "description": "英語をネイティブレベルにするためのアプリケーションスイート",
-        "description-title": "概要",
-        "description-content": "Omniaは、私と他の4人のチームメンバーによってハッカソン中に開発されました。私たちは、API、フロントエンドのウェブアプリ、Chrome拡張機能、モバイルアプリを数週間で開発しました。<a class='text-accent font-bold' href='https://docs.google.com/presentation/d/15PTuZaG1NjxgJqFxl_e6LM0fL03UuVqiCUsgjtHDhpk/edit?usp=sharing' rel='noreferrer' target='_blank'>ローンチしたときのプレゼンをご覧いただけます。 </a>.",
-        "tech-stack": "使われた技術"
-    },
-    "other": {
-        "title": "他のプロジェクト",
-        "description": "私がこれまで取り組んできた他のプロジェクトを紹介します。",
-        "plantopia-title": "Plantopia",
-        "plantopia-content": "Unityで開発された、お金が尽きる前に植物を育て続けなければならないというゲームです。リポジトリは非公開ですが、後でコードをお見せすることもできます。",
-        "shousetu-title": "Light Novel Downloader",
-        "shousetu-content": "Pythonで書いた、<a class='text-accent text-lg font-semibold' target='_blank' href='https://syosetu.com/'>小説家になろう</a>のAPIラッパーです。 本来、<a class='text-accent text-lg font-semibold' href='/folders/projects/jpfreq'>jpfreq</a>と併用して使われる日本語学習ツールです。",
-        "svelte-share-title": "Svelte Share",
-        "svelte-share-content": "SvelteKit用のコンポーネントライブラリ群で、シェアボタンを作成します。現在、LineとXでシェア機能が実装されています。"
-    },
-    "jpfreq": {
-        "title": "Japanese Frequency Processor",
-        "description": "日本語で書かれた文章中の単語の頻度を分析するツール",
-        "description-title": "概要",
-        "description-content": "これは、Pythonで書かれたコマンドラインツールで、<a class='text-accent font-bold' href='https://github.com/KoichiYasuoka/mecab-python3' rel='noreferrer' target='_blank'>MeCab</a> を使って分析を行います。",
-        "tech-stack": "技術スタック"
-    },
-    "electron-timer": {
-        "title": "Electron Timer",
-        "description": "インターバルタイマーを簡単に設定できるアプリ",
-        "description-title": "概要",
-        "description-content": "Electron Timerは、タイマーを作成できるデスクトップアプリケーションです。各タイマーには異なるインターバル、ループ、音を設定できます。これは私が勉強するときに、カスタマイズできるインターバルタイマーが欲しいと思ったので、作成しました。",
-        "tech-stack": "技術スタック"
-    },
-    "projects": {
-        "home-call": "ホームコール",
-        "short-it": "Short It",
-        "jpfreq": "Japanese Frequency Processor",
-        "electron-timer": "Electron Timer",
-        "omnia": "Omnia",
-        "other": "other",
-        "secret": "基本情報技術者試験"
-    },
-    "about": {
-        "description": "12歳のときからずっとプログラミングをしています。",
-        "working-on": "現在取り組んでいること",
-        "timeline": {
-            "title": "タイムライン",
-            "jouhou-exam": {
-                "title": "基本情報技術者試験に合格",
-                "description": "10日間だけの勉強で基本情報技術者試験を受験し、合格しました。",
-                "date": "2024年12月19日"
-            },
-            "exchange": {
-                "title": "京都大学への交換留学",
-                "description": "京都大学に交換留学をしています。専攻は情報学です",
-                "date": "2024年10月01日"
-            },
-            "familye": {
-                "title": "有限会社ファミリエに入社",
-                "description": "ホームコールを開発した後、クラウドベースのソリューションとしてさらに開発するために、有限会社ファミリエで働き始めました。",
-                "date": "2024年11月"
-            },
-            "pactom": {
-                "title": "Pactomを共同設立",
-                "description": "ハッカソンで出会った友人と共に、ライブデモを通じてSaaS販売プロセスを革新することを目指すスタートアップ、Pactomを設立しました。CTOとして、5人以上のエンジニアのチームを管理し、製品の設計と初期MVPの構築を行いました。",
-                "date": "2024年04月〜11月"
-            },
-            "jlpt": {
-                "title": "JLPT N1合格",
-                "description": "京都大学で勉強するためには、日本語能力試験（JLPT）N1に合格する必要がありました。初めてのJLPT受験でしたが、19歳で合格しました。",
-                "date": "2023年07月"
-            },
-            "freelance": {
-                "title": "フリーランス活動開始",
-                "description": "2023年初頭から、小規模なマーケティングエージェンシーから大規模な医療施設まで、さまざまなクライアントからの仕事を受け入れ始めました。",
-                "date": "2023年"
-            },
-            "unsw": {
-                "title": "UNSWに入学",
-                "description": "ニューサウスウェールズ大学のコンピュータサイエンス学部に入学しました。",
-                "date": "2022年09月"
-            }
-        }
-    },
-    "contact": {
-        "title": "お問い合わせ",
-        "name": "フルネーム",
-        "email": "メール",
-        "message": "お問い合わせ内容",
-        "send": "送信",
-        "success": "メッセージが送信されました 🎉",
-        "error": "エラーが発生しました ☹️",
-        "try-again": "やり直し",
-        "invalid-email": "無効なメールアドレスです！",
-        "invalid-name": "名前を教えてください！"
-    },
-    "articles": {
-        "name": "名前",
-        "category": "カテゴリー",
-        "time-posted": "投稿時間"
-    }
+	"back": "戻る",
+	"snake": {
+		"game-over": "ゲームオーバー。もう一度プレイしますか？"
+	},
+	"meta": {
+		"home": {
+			"title": "マーリー・モルヴィン・ブルーム",
+			"description": "大阪を拠点としたソフトウェアエンジニア",
+			"image": "/marley.png"
+		},
+		"folders": {
+			"title": "マーリーのフォルダー",
+			"description": "大阪を拠点としたソフトウェアエンジニア",
+			"image": "/marley.png"
+		},
+		"projects": {
+			"title": "マーリーのプロジェクト",
+			"description": "大阪を拠点としたソフトウェアエンジニアのプロジェクト一覧",
+			"image": "/marley.png"
+		}
+	},
+	"home": {
+		"title": "Hi, I'm Marley",
+		"description": "大阪を拠点としたソフトウェアエンジニア",
+		"search": "検索",
+		"about-me": "私について",
+		"projects": "プロジェクト",
+		"articles": "ブログ",
+		"snake": "スネーク"
+	},
+	"home-call": {
+		"description": "介護施設の受付業務や予約管理を効率化するツール。",
+		"interested": "興味がありますか？ <a class=\"text-accent font-semibold\" target=\"_blank\" rel=\"noopener noreferrer\"  href=\"https://www.home-call.app\">ホームページ</a> をチェックしてください。",
+		"tech-stack": "技術スタック",
+		"tech-stack-description": "ホームコールにはクラウド版とデスクトップ版の2つの製品バージョンがあります。将来的にはクラウド版のみがサポートされますが、一部のユーザーは依然としてデスクトップ版を使用しています。",
+		"cloud-version": "クラウド版",
+		"desktop-version": "デスクトップ版",
+		"data-management-title": "データ管理",
+		"data-management-content": "ホームコールは、介護施設の訪問者、入居者、予約、訪問履歴などに関する情報を管理するために、リレーショナルデータベースを使用しています。",
+		"notifications-title": "通知",
+		"notifications-content": "デスクトップアプリケーションはローカルネットワークにサーバーを公開することで、クライアントがWebSocket経由で通知を受け取ることができるようにしています。さらに、サーバーはチェックインや通知の受信を行うためのウェブサイトも公開しています。また、通知を受け取るための専用クライアントもあります。",
+		"updates-title": "自動アップデート",
+		"updates-description": "デスクトップアプリケーションは、新しいリリースがプライベートリリースリポジトリにプッシュされると自動的にアップデートされます。これにより、ユーザーは安全でスムーズにアップデートをすることができます。"
+	},
+	"short-it": {
+		"title": "Short It",
+		"description": " シンプルで使いやすいURL短縮ツール",
+		"interested": "興味がありますか? まだ開発中なので、数週間後に戻ってきてください、、、",
+		"tech-stack": "技術スタック",
+		"tech-stack-description": "Short-itは主にフロントエンドとバックエンドの2つの主要なサービスに分かれています。フロントエンドはSvelteKitアプリケーションで、バックエンドはGolangアプリケーションです。",
+		"technologies": "技術"
+	},
+	"omnia": {
+		"description": "英語をネイティブレベルにするためのアプリケーションスイート",
+		"description-title": "概要",
+		"description-content": "Omniaは、私と他の4人のチームメンバーによってハッカソン中に開発されました。私たちは、API、フロントエンドのウェブアプリ、Chrome拡張機能、モバイルアプリを数週間で開発しました。<a class='text-accent font-bold' href='https://docs.google.com/presentation/d/15PTuZaG1NjxgJqFxl_e6LM0fL03UuVqiCUsgjtHDhpk/edit?usp=sharing' rel='noreferrer' target='_blank'>ローンチしたときのプレゼンをご覧いただけます。 </a>.",
+		"tech-stack": "使われた技術"
+	},
+	"other": {
+		"title": "他のプロジェクト",
+		"description": "私がこれまで取り組んできた他のプロジェクトを紹介します。",
+		"plantopia-title": "Plantopia",
+		"plantopia-content": "Unityで開発された、お金が尽きる前に植物を育て続けなければならないというゲームです。リポジトリは非公開ですが、後でコードをお見せすることもできます。",
+		"shousetu-title": "Light Novel Downloader",
+		"shousetu-content": "Pythonで書いた、<a class='text-accent text-lg font-semibold' target='_blank' href='https://syosetu.com/'>小説家になろう</a>のAPIラッパーです。 本来、<a class='text-accent text-lg font-semibold' href='/folders/projects/jpfreq'>jpfreq</a>と併用して使われる日本語学習ツールです。",
+		"svelte-share-title": "Svelte Share",
+		"svelte-share-content": "SvelteKit用のコンポーネントライブラリ群で、シェアボタンを作成します。現在、LineとXでシェア機能が実装されています。"
+	},
+	"jpfreq": {
+		"title": "Japanese Frequency Processor",
+		"description": "日本語で書かれた文章中の単語の頻度を分析するツール",
+		"description-title": "概要",
+		"description-content": "これは、Pythonで書かれたコマンドラインツールで、<a class='text-accent font-bold' href='https://github.com/KoichiYasuoka/mecab-python3' rel='noreferrer' target='_blank'>MeCab</a> を使って分析を行います。",
+		"tech-stack": "技術スタック"
+	},
+	"electron-timer": {
+		"title": "Electron Timer",
+		"description": "インターバルタイマーを簡単に設定できるアプリ",
+		"description-title": "概要",
+		"description-content": "Electron Timerは、タイマーを作成できるデスクトップアプリケーションです。各タイマーには異なるインターバル、ループ、音を設定できます。これは私が勉強するときに、カスタマイズできるインターバルタイマーが欲しいと思ったので、作成しました。",
+		"tech-stack": "技術スタック"
+	},
+	"projects": {
+		"home-call": "ホームコール",
+		"short-it": "Short It",
+		"jpfreq": "Japanese Frequency Processor",
+		"electron-timer": "Electron Timer",
+		"omnia": "Omnia",
+		"other": "other",
+		"secret": "基本情報技術者試験"
+	},
+	"about": {
+		"description": "12歳のときからずっとプログラミングをしています。",
+		"working-on": "現在取り組んでいること",
+		"timeline": {
+			"title": "タイムライン",
+			"jouhou-exam": {
+				"title": "基本情報技術者試験に合格",
+				"description": "10日間だけの勉強で基本情報技術者試験を受験し、合格しました。",
+				"date": "2024年12月19日"
+			},
+			"exchange": {
+				"title": "京都大学への交換留学",
+				"description": "京都大学に交換留学をしています。専攻は情報学です",
+				"date": "2024年10月01日"
+			},
+			"familye": {
+				"title": "有限会社ファミリエに入社",
+				"description": "ホームコールを開発した後、クラウドベースのソリューションとしてさらに開発するために、有限会社ファミリエで働き始めました。",
+				"date": "2024年11月"
+			},
+			"pactom": {
+				"title": "Pactomを共同設立",
+				"description": "ハッカソンで出会った友人と共に、ライブデモを通じてSaaS販売プロセスを革新することを目指すスタートアップ、Pactomを設立しました。CTOとして、5人以上のエンジニアのチームを管理し、製品の設計と初期MVPの構築を行いました。",
+				"date": "2024年04月〜11月"
+			},
+			"jlpt": {
+				"title": "JLPT N1合格",
+				"description": "京都大学で勉強するためには、日本語能力試験（JLPT）N1に合格する必要がありました。初めてのJLPT受験でしたが、19歳で合格しました。",
+				"date": "2023年07月"
+			},
+			"freelance": {
+				"title": "フリーランス活動開始",
+				"description": "2023年初頭から、小規模なマーケティングエージェンシーから大規模な医療施設まで、さまざまなクライアントからの仕事を受け入れ始めました。",
+				"date": "2023年"
+			},
+			"unsw": {
+				"title": "UNSWに入学",
+				"description": "ニューサウスウェールズ大学のコンピュータサイエンス学部に入学しました。",
+				"date": "2022年09月"
+			}
+		}
+	},
+	"contact": {
+		"title": "お問い合わせ",
+		"name": "フルネーム",
+		"email": "メール",
+		"message": "お問い合わせ内容",
+		"send": "送信",
+		"success": "メッセージが送信されました 🎉",
+		"error": "エラーが発生しました ☹️",
+		"try-again": "やり直し",
+		"invalid-email": "無効なメールアドレスです！",
+		"invalid-name": "名前を教えてください！"
+	},
+	"articles": {
+		"name": "名前",
+		"category": "カテゴリー",
+		"time-posted": "投稿時間"
+	}
 }

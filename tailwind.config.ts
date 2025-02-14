@@ -15,8 +15,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				'sans': ['inter', 'noto-sans'],
-				'mono': ['ubuntu-mono', 'ui-monospace']
+				sans: ['Inter', 'Noto Sans'],
+				mono: ['Ubuntu Mono', 'ui-monospace']
 			},
 			fontSize: {
 				'6xl': '4rem',
@@ -24,14 +24,14 @@ export default {
 				'4xl': '2.1875rem',
 				'3xl': '1.8125rem',
 				'2xl': '1.5rem',
-				'xl': '1.25rem',
-				'lg': '1.125rem',
-				'base': '1rem',
-				'sm': '0.875rem',
-				'xs': '0.8125rem',
-				'2xs': '0..75rem',
-			},
-		},
+				xl: '1.25rem',
+				lg: '1.125rem',
+				base: '1rem',
+				sm: '0.875rem',
+				xs: '0.8125rem',
+				'2xs': '0..75rem'
+			}
+		}
 	},
-	plugins: [],
+	plugins: []
 } satisfies Config;

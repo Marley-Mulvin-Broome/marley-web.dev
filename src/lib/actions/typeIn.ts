@@ -1,39 +1,35 @@
-import type { Writable } from "svelte/store";
+import type { Writable } from 'svelte/store';
 
 interface TypeInOptions {
-  interval?: number,
-  blinking?: Writable<boolean>
+	interval?: number;
+	blinking?: Writable<boolean>;
 }
 
-export const typeIn = (
-  node: HTMLElement,
-  options?: TypeInOptions,
-) => {
-  const { interval = 100, blinking } = options || {};
+export const typeIn = (node: HTMLElement, options?: TypeInOptions) => {
+	const { interval = 100, blinking } = options || {};
 
-  const text = node.textContent || ' ';
+	const text = node.textContent || ' ';
 
-  node.textContent = ' ';
+	node.textContent = ' ';
 
-  let index = 0;
+	let index = 0;
 
-  blinking?.set(false);
+	blinking?.set(false);
 
-  const intervalId = setInterval(() => {
-    node.textContent = text.slice(0, index + 1);
+	const intervalId = setInterval(() => {
+		node.textContent = text.slice(0, index + 1);
 
-    index++;
-    
+		index++;
 
-    if (index === text.length) {
-      clearInterval(intervalId);
-      blinking?.set(true);
-    }
-  }, interval);
+		if (index === text.length) {
+			clearInterval(intervalId);
+			blinking?.set(true);
+		}
+	}, interval);
 
-  return {
-    destroy() {
-      clearInterval(intervalId);
-    },
-  };
-}
+	return {
+		destroy() {
+			clearInterval(intervalId);
+		}
+	};
+};

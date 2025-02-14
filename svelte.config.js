@@ -8,19 +8,37 @@ import rehypeSlug from 'rehype-slug';
 
 const theme = 'github-dark';
 
-const highlighter = await createHighlighter({ themes: [theme], langs: ['javascript', 'typescript', 'css', 'json', 'markdown', 'bash', 'python', 'go', 'rust', 'svelte', 'html', 'xml', 'yaml', 'toml'] });
+const highlighter = await createHighlighter({
+	themes: [theme],
+	langs: [
+		'javascript',
+		'typescript',
+		'css',
+		'json',
+		'markdown',
+		'bash',
+		'python',
+		'go',
+		'rust',
+		'svelte',
+		'html',
+		'xml',
+		'yaml',
+		'toml'
+	]
+});
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	highlight: {
-		highlighter: async (code, lang = "text") => {
+		highlighter: async (code, lang = 'text') => {
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
 			return `{@html \`${html}\` }`;
 		}
 	},
 	rehypePlugins: [rehypeSlug],
-	remarkPlugins: [remarkToc, remarkUnwrapImages],
-}
+	remarkPlugins: [remarkToc, remarkUnwrapImages]
+};
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -30,7 +48,7 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			regions: ["kix1"]
+			regions: ['kix1']
 		})
 	},
 

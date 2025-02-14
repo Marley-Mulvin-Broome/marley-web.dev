@@ -1,84 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer base {
-    @font-face {
-        font-family: 'inter';
-        src: url(/fonts/inter-regular.ttf);
-    }
-
-    @font-face {
-        font-family: 'noto-sans';
-        src: url(/fonts/noto-sans.ttf);
-    }
-
-    @font-face {
-        font-family: 'ubuntu-mono';
-        src: url(/fonts/ubuntu-mono-regular.ttf);
-    }
-}
-
 * {
-    user-select: none;
+	user-select: none;
 }
 
 .prose * {
-    user-select: text;
+	user-select: text;
 }
 
 .prose :is(a) {
-    @apply text-accent;
+	@apply text-accent hover:underline;
 }
 
 .prose :is(p) {
-    @apply mb-2 text-lg;
-    /* font-size: 1.125rem; */
+	@apply mb-2 text-lg;
+	/* font-size: 1.125rem; */
 }
 
 .prose :is(em) {
-    @apply italic;
+	@apply italic;
 }
 
 .prose :is(strong) {
-    @apply font-semibold;
+	@apply font-semibold;
 }
 
 .prose :is(h2, h3, h4, h5, h6) {
-    @apply mt-8 mb-4 font-semibold;
+	@apply mt-8 mb-4 font-semibold;
 }
 
 .prose :is(h2) {
-    @apply text-2xl;
+	@apply text-2xl;
 }
 
 .prose :is(h3) {
-    @apply text-xl;
+	@apply text-xl;
 }
 
 .prose :is(h4) {
-    @apply text-lg;
+	@apply text-lg;
 }
 
 .prose :is(h5) {
-    @apply text-base;
+	@apply text-base;
 }
 
 .prose :is(h6) {
-    @apply text-sm;
+	@apply text-sm;
 }
 
 .prose p:not(:is(h2, h3, h4, h5, h6) + p) {
-    @apply mt-6;
+	@apply mt-6;
 }
 
 .prose :is(ul, ol) {
-    list-style-type: '🔥';
-    @apply pl-4 mt-2;
+	@apply pl-4 mt-2;
+}
+
+.prose :is(ol) {
+	list-style-type: decimal;
+}
+
+.prose :is(ul) {
+	list-style-type: '🔥';
 }
 
 .prose :is(ul, ol) > li {
-    @apply pl-2 mb-2 text-lg;
+	@apply pl-2 mb-2 ml-4 text-lg;
 }
 
 .prose pre {
@@ -89,26 +80,26 @@
 }
 
 code {
-    counter-reset: step;
-    counter-increment: step 0;
+	counter-reset: step;
+	counter-increment: step 0;
 }
 
 code .line {
-    text-wrap: wrap;
+	text-wrap: wrap;
 }
 
 code:not(:has(.line)) {
-    background-color: #24292e;
+	background-color: #24292e;
 
-    @apply p-1 rounded-md;
+	@apply p-1 rounded-md;
 }
 
 code .line::before {
-    content: counter(step);
-    counter-increment: step;
-    width: 1rem;
-    margin-right: 1.5rem;
-    display: inline-block;
-    text-align: right;
-    color: rgba(137, 164, 175, 0.4);
+	content: counter(step);
+	counter-increment: step;
+	width: 1rem;
+	margin-right: 1.5rem;
+	display: inline-block;
+	text-align: right;
+	color: rgba(137, 164, 175, 0.4);
 }

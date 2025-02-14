@@ -1,12 +1,12 @@
-import { addTranslations, setLocale, setRoute } from "$lib/translations";
+import { addTranslations, setLocale, setRoute } from '$lib/translations';
 
 export const load = async ({ data }) => {
-  const { preferredLanguage, route, translations } = data;
+	const { preferredLanguage, route, translations } = data;
 
-  addTranslations(translations);
+	addTranslations(translations);
 
-  await setRoute(route);
-  await setLocale(preferredLanguage);
+	await setRoute(route);
+	await setLocale(preferredLanguage);
 
-  return {};
+	return {};
 };
