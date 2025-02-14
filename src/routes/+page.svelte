@@ -1,8 +1,6 @@
 <script>
-
-	import Meta from "$lib/components/Meta.svelte";
-	import { t } from "$lib/translations";
-
+	import Meta from '$lib/components/Meta.svelte';
+	import { t } from '$lib/translations';
 </script>
 
 <Meta

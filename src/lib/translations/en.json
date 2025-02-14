@@ -1,152 +1,152 @@
 {
-    "back": "Back",
-    "snake": {
-        "game-over": "Game Over. Do you want to play again?"
-    },
-    "meta": {
-        "home": {
-            "title": "Marley Mulvin Broome",
-            "description": "Software Engineer & Sigma Male based in Osaka, Japan",
-            "image": "/marley.png"
-        },
-        "folders": {
-            "title": "Marleys Folders",
-            "description": "Software Engineer & Sigma Male based in Osaka, Japan",
-            "image": "/marley.png"
-        },
-        "projects": {
-            "title": "Marleys Projects",
-            "description": "See Marley Mulvin Broome's software projects",
-            "image": "/marley.png"
-        }
-    },
-    "home": {
-        "title": "Hi, I'm Marley",
-        "description": "Software Engineer & Sigma Male based in Osaka, Japan",
-        "search": "Search",
-        "about-me": "About Me",
-        "projects": "Projects",
-        "articles": "Articles",
-        "snake": "Snake"
-    },
-    "home-call": {
-        "description": "A solution for nursing home visitations, bookings, and short stays.",
-        "interested": "Interested? Check out the <a class=\"text-accent font-semibold\" target=\"_blank\" rel=\"noopener noreferrer\"  href=\"https://lp.home-call.app\">home page.</a>",
-        "tech-stack": "Tech Stack",
-        "tech-stack-description": "Home call has two product versions: a cloud and a desktop version. The cloud version is currently the only version which will be supported in the future, but a legacy desktop version was and still is in use by some users.",
-        "cloud-version": "Cloud Version",
-        "desktop-version": "Desktop Version",
-        "data-management-title": "Data Management",
-        "data-management-content": "Home Call uses a relational database to store information about a nursing homes visitors, residents, bookings, visitor history, and much more.",
-        "notifications-title": "Notifications",
-        "notifications-content": "The desktop application exposes a server to the local network, allowing for clients to connect and listen to notifications over a websocket. Moreover, the server also exposes websites for checking in and listening to notifications. There is also a dedicated client for listening to notifications.",
-        "updates-title": "Auto Updates",
-        "updates-description": "The desktop application is autoupdated when new releases are pushed to the private release repository. This is a safe and smooth way of keeping our users up to date and secure."
-    },
-    "short-it": {
-        "title": "Short It",
-        "description": " A simple and easy to use URL shortener.",
-        "interested": "Interested? Its currently in development so come back in a few weeks...",
-        "tech-stack": "Tech Stack",
-        "tech-stack-description": "Short-it is broken into two main services: the frontend and the backend. The frontend is a SvelteKit application, and the backend is a Golang application.",
-        "technologies": "Technologies"
-    },
-    "omnia": {
-        "description": "A application suite for making you a native English speaker.",
-        "description-title": "What Omnia is About",
-        "description-content": "Omnia was developed during a Hackathon by myself and 4 other team members. We made an API, frontend web app, chrome extension, and mobile app all within a couple weeks. You can see the launch presentation <a class='text-accent font-bold' href='https://docs.google.com/presentation/d/15PTuZaG1NjxgJqFxl_e6LM0fL03UuVqiCUsgjtHDhpk/edit?usp=sharing' rel='noreferrer' target='_blank'>here</a>.",
-        "tech-stack": "Technologies Used"
-    },
-    "other": {
-        "title": "Other Projects",
-        "description": "A collection of other not so interesting projects that I have worked on.",
-        "plantopia-title": "Plantopia",
-        "plantopia-content": "A game developed in Unity where you have to keep growing plants before your money runs out! The repository is private but I can show you the code some time as well.",
-        "shousetu-title": "Light Novel Downloader",
-        "shousetu-content": "A python library for interacting with the API of <a class='text-accent text-lg font-semibold' target='_blank' href='https://syosetu.com/'>syosetu.com</a> and downloading novels. It was initially made to be used in conjunction with <a class='text-accent text-lg font-semibold' href='/folders/projects/jpfreq'>jpfreq</a>.",
-        "svelte-share-title": "Svelte Share",
-        "svelte-share-content": "A group of component libraries for SvelteKit to create share buttons. Currently implemented sharing with Line and X."
-    },
-    "jpfreq": {
-        "title": "Japanese Frequency Processor",
-        "description": "A tool for analysing the frequency of words in a Japanese text.",
-        "description-title": "Well what the hell is it?",
-        "description-content": "Jpfreq is a tool for analysing the frequency of words in a Japanese text. It is a command line tool written in Python, and it uses the <a class='text-accent font-bold' href='https://github.com/KoichiYasuoka/mecab-python3' rel='noreferrer' target='_blank'>MeCab</a> library to perform the analysis.",
-        "tech-stack": "Tech Stack"
-    },
-    "electron-timer": {
-        "title": "Electron Timer",
-        "description": "An app for easily setting interval timers.",
-        "description-title": "The Easy Timer Solution",
-        "description-content": "Electron Timer is a desktop application that allows you to create timers. Each timer can have different intervals, loopss, and sounds. It was created as I lacked the precise timing features I wanted for my study.",
-        "tech-stack": "Tech Stack"
-    },
-    "projects": {
-        "home-call": "Home Call",
-        "short-it": "Short It",
-        "jpfreq": "Japanese Frequency Processor",
-        "electron-timer": "Electron Timer",
-        "omnia": "Omnia",
-        "other": "other",
-        "secret": "Fundamental Information Technology Engineer Examination"
-    },
-    "about": {
-        "description": "I've been programming since I was 12 years old, and sadly don't seem to be stopping anytime soon. I'm currently on the look out for some short-term internships.",
-        "working-on": "Currently Working On",
-        "timeline": {
-            "title": "Timeline",
-            "jouhou-exam": {
-                "title": "Passed Basic Information Technology Engineer Examination",
-                "description": "With only 10 days of study, I obtained the 'Basic Information Technology Engineer' qualification.",
-                "date": "2024-12-19"
-            },
-            "exchange": {
-                "title": "Exchange to Kyoto University",
-                "description": "Started my half year exchange program at Kyoto University, Japan, where I majored in Computer Science.",
-                "date": "2024-10-01"
-            },
-            "familye": {
-                "title": "Joined Familiye",
-                "description": "After building homecall, a product that helps nursing homes manage visitations, I started working at Familiye to further develop the product as a cloud-based solution.",
-                "date": "2024-11"
-            },
-            "pactom": {
-                "title": "Co-Founded Pactom",
-                "description": "Alongside one of my friends I met through the various hackathons and meetups, we founded Pactom, a startup that aims to innovate the SaaS sales process through live demos. As CTO, I managed a team of over 5 engineers, designing the product and building the early MVPs.",
-                "date": "2024-04"
-            },
-            "jlpt": {
-                "title": "Passed JLPT N1",
-                "description": "To be allowed to study at Kyoto university, I had to pass the Japanese Language Proficiency Test (JLPT) N1 level. Even though it was my first time ever taking the JLPT, I managed to pass it at only the age of 19.",
-                "date": "2023-07"
-            },
-            "freelance": {
-                "title": "Began Freelance Software Work",
-                "description": "From the start of 2023, I began accepting work from various clients ranging from small marketing agencies to large healthcare facilities.",
-                "date": "2023"
-            },
-            "unsw": {
-                "title": "Started studying at UNSW",
-                "description": "I started studying a bachelors of Computer Science at The University of New South Wales, Sydney.",
-                "date": "2022-09"
-            }
-        }
-    },
-    "contact": {
-        "title": "Contact",
-        "name": "Name",
-        "email": "Email",
-        "message": "Message",
-        "send": "Send",
-        "success": "Message sent 🎉",
-        "error": "Something went wrong ☹️",
-        "try-again": "Try again",
-        "invalid-email": "Invalid email address!",
-        "invalid-name": "Tell me your name!"
-    },
-    "articles": {
-        "name": "Name",
-        "category": "Category",
-        "time-posted": "Time Posted"
-    }
+	"back": "Back",
+	"snake": {
+		"game-over": "Game Over. Do you want to play again?"
+	},
+	"meta": {
+		"home": {
+			"title": "Marley Mulvin Broome",
+			"description": "Software Engineer & Sigma Male based in Osaka, Japan",
+			"image": "/marley.png"
+		},
+		"folders": {
+			"title": "Marleys Folders",
+			"description": "Software Engineer & Sigma Male based in Osaka, Japan",
+			"image": "/marley.png"
+		},
+		"projects": {
+			"title": "Marleys Projects",
+			"description": "See Marley Mulvin Broome's software projects",
+			"image": "/marley.png"
+		}
+	},
+	"home": {
+		"title": "Hi, I'm Marley",
+		"description": "Software Engineer & Sigma Male based in Osaka, Japan",
+		"search": "Search",
+		"about-me": "About Me",
+		"projects": "Projects",
+		"articles": "Articles",
+		"snake": "Snake"
+	},
+	"home-call": {
+		"description": "A solution for nursing home visitations, bookings, and short stays.",
+		"interested": "Interested? Check out the <a class=\"text-accent font-semibold\" target=\"_blank\" rel=\"noopener noreferrer\"  href=\"https://lp.home-call.app\">home page.</a>",
+		"tech-stack": "Tech Stack",
+		"tech-stack-description": "Home call has two product versions: a cloud and a desktop version. The cloud version is currently the only version which will be supported in the future, but a legacy desktop version was and still is in use by some users.",
+		"cloud-version": "Cloud Version",
+		"desktop-version": "Desktop Version",
+		"data-management-title": "Data Management",
+		"data-management-content": "Home Call uses a relational database to store information about a nursing homes visitors, residents, bookings, visitor history, and much more.",
+		"notifications-title": "Notifications",
+		"notifications-content": "The desktop application exposes a server to the local network, allowing for clients to connect and listen to notifications over a websocket. Moreover, the server also exposes websites for checking in and listening to notifications. There is also a dedicated client for listening to notifications.",
+		"updates-title": "Auto Updates",
+		"updates-description": "The desktop application is autoupdated when new releases are pushed to the private release repository. This is a safe and smooth way of keeping our users up to date and secure."
+	},
+	"short-it": {
+		"title": "Short It",
+		"description": " A simple and easy to use URL shortener.",
+		"interested": "Interested? Its currently in development so come back in a few weeks...",
+		"tech-stack": "Tech Stack",
+		"tech-stack-description": "Short-it is broken into two main services: the frontend and the backend. The frontend is a SvelteKit application, and the backend is a Golang application.",
+		"technologies": "Technologies"
+	},
+	"omnia": {
+		"description": "A application suite for making you a native English speaker.",
+		"description-title": "What Omnia is About",
+		"description-content": "Omnia was developed during a Hackathon by myself and 4 other team members. We made an API, frontend web app, chrome extension, and mobile app all within a couple weeks. You can see the launch presentation <a class='text-accent font-bold' href='https://docs.google.com/presentation/d/15PTuZaG1NjxgJqFxl_e6LM0fL03UuVqiCUsgjtHDhpk/edit?usp=sharing' rel='noreferrer' target='_blank'>here</a>.",
+		"tech-stack": "Technologies Used"
+	},
+	"other": {
+		"title": "Other Projects",
+		"description": "A collection of other not so interesting projects that I have worked on.",
+		"plantopia-title": "Plantopia",
+		"plantopia-content": "A game developed in Unity where you have to keep growing plants before your money runs out! The repository is private but I can show you the code some time as well.",
+		"shousetu-title": "Light Novel Downloader",
+		"shousetu-content": "A python library for interacting with the API of <a class='text-accent text-lg font-semibold' target='_blank' href='https://syosetu.com/'>syosetu.com</a> and downloading novels. It was initially made to be used in conjunction with <a class='text-accent text-lg font-semibold' href='/folders/projects/jpfreq'>jpfreq</a>.",
+		"svelte-share-title": "Svelte Share",
+		"svelte-share-content": "A group of component libraries for SvelteKit to create share buttons. Currently implemented sharing with Line and X."
+	},
+	"jpfreq": {
+		"title": "Japanese Frequency Processor",
+		"description": "A tool for analysing the frequency of words in a Japanese text.",
+		"description-title": "Well what the hell is it?",
+		"description-content": "Jpfreq is a tool for analysing the frequency of words in a Japanese text. It is a command line tool written in Python, and it uses the <a class='text-accent font-bold' href='https://github.com/KoichiYasuoka/mecab-python3' rel='noreferrer' target='_blank'>MeCab</a> library to perform the analysis.",
+		"tech-stack": "Tech Stack"
+	},
+	"electron-timer": {
+		"title": "Electron Timer",
+		"description": "An app for easily setting interval timers.",
+		"description-title": "The Easy Timer Solution",
+		"description-content": "Electron Timer is a desktop application that allows you to create timers. Each timer can have different intervals, loopss, and sounds. It was created as I lacked the precise timing features I wanted for my study.",
+		"tech-stack": "Tech Stack"
+	},
+	"projects": {
+		"home-call": "Home Call",
+		"short-it": "Short It",
+		"jpfreq": "Japanese Frequency Processor",
+		"electron-timer": "Electron Timer",
+		"omnia": "Omnia",
+		"other": "other",
+		"secret": "Fundamental Information Technology Engineer Examination"
+	},
+	"about": {
+		"description": "I've been programming since I was 12 years old, and sadly don't seem to be stopping anytime soon. I'm currently on the look out for some short-term internships.",
+		"working-on": "Currently Working On",
+		"timeline": {
+			"title": "Timeline",
+			"jouhou-exam": {
+				"title": "Passed Basic Information Technology Engineer Examination",
+				"description": "With only 10 days of study, I obtained the 'Basic Information Technology Engineer' qualification.",
+				"date": "2024-12-19"
+			},
+			"exchange": {
+				"title": "Exchange to Kyoto University",
+				"description": "Started my half year exchange program at Kyoto University, Japan, where I majored in Computer Science.",
+				"date": "2024-10-01"
+			},
+			"familye": {
+				"title": "Joined Familiye",
+				"description": "After building homecall, a product that helps nursing homes manage visitations, I started working at Familiye to further develop the product as a cloud-based solution.",
+				"date": "2024-11"
+			},
+			"pactom": {
+				"title": "Co-Founded Pactom",
+				"description": "Alongside one of my friends I met through the various hackathons and meetups, we founded Pactom, a startup that aims to innovate the SaaS sales process through live demos. As CTO, I managed a team of over 5 engineers, designing the product and building the early MVPs.",
+				"date": "2024-04"
+			},
+			"jlpt": {
+				"title": "Passed JLPT N1",
+				"description": "To be allowed to study at Kyoto university, I had to pass the Japanese Language Proficiency Test (JLPT) N1 level. Even though it was my first time ever taking the JLPT, I managed to pass it at only the age of 19.",
+				"date": "2023-07"
+			},
+			"freelance": {
+				"title": "Began Freelance Software Work",
+				"description": "From the start of 2023, I began accepting work from various clients ranging from small marketing agencies to large healthcare facilities.",
+				"date": "2023"
+			},
+			"unsw": {
+				"title": "Started studying at UNSW",
+				"description": "I started studying a bachelors of Computer Science at The University of New South Wales, Sydney.",
+				"date": "2022-09"
+			}
+		}
+	},
+	"contact": {
+		"title": "Contact",
+		"name": "Name",
+		"email": "Email",
+		"message": "Message",
+		"send": "Send",
+		"success": "Message sent 🎉",
+		"error": "Something went wrong ☹️",
+		"try-again": "Try again",
+		"invalid-email": "Invalid email address!",
+		"invalid-name": "Tell me your name!"
+	},
+	"articles": {
+		"name": "Name",
+		"category": "Category",
+		"time-posted": "Time Posted"
+	}
 }
