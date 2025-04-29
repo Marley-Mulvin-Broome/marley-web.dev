@@ -13,3 +13,7 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 	}
 	return array;
 };
+
+export const clamp = (value: number, min: number, max: number): number => {
+	return Math.max(min, Math.min(value, max));
+};

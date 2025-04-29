@@ -1,5 +1,142 @@
 import type ForceGraph from './ForceGraph';
 import type { GraphVisualiserSettings, GraphVisualiserSettingsPartial, Node } from './graph.types';
+import { dfs } from './graph.util';
+
+class CanvasCamera {
+	x: number;
+	y: number;
+	private currentZoom: number;
+	private canvas: HTMLCanvasElement;
+	private context: CanvasRenderingContext2D;
+
+	// Zoom constraints
+	private MAX_ZOOM = 5;
+	private MIN_ZOOM = 0.01;
+
+	constructor(canvas: HTMLCanvasElement, x: number, y: number, zoom: number) {
+		this.x = x;
+		this.y = y;
+		this.canvas = canvas;
+		this.currentZoom = zoom;
+
+		this.context = canvas.getContext('2d') as CanvasRenderingContext2D;
+	}
+
+	get zoom() {
+		return this.currentZoom;
+	}
+
+	set zoom(value: number) {
+		this.currentZoom = Math.min(this.MAX_ZOOM, Math.max(this.MIN_ZOOM, value));
+	}
+
+	focusOn(x: number, y: number, zoom = this.currentZoom) {
+		this.x = x;
+		this.y = y;
+		this.currentZoom = zoom;
+		this.reset();
+		this.apply();
+	}
+
+	apply() {
+		const canvas = this.canvas;
+		const centerX = canvas.width / 2;
+		const centerY = canvas.height / 2;
+
+		// Move to canvas center
+		this.context.translate(centerX, centerY);
+		// Apply zoom
+		this.context.scale(this.currentZoom, this.currentZoom);
+		// Move based on offset
+		this.context.translate(this.x, this.y);
+	}
+
+	reset() {
+		this.context.setTransform(
+			window.devicePixelRatio || 1,
+			0,
+			0,
+			window.devicePixelRatio || 1,
+			0,
+			0
+		);
+	}
+
+	isVisible(x: number, y: number) {
+		const canvas = this.canvas;
+		const centerX = canvas.width / 2;
+		const centerY = canvas.height / 2;
+
+		// Check if the point is within the visible area
+		return (
+			x >= (this.x - centerX) / this.currentZoom &&
+			x <= (this.x + centerX) / this.currentZoom &&
+			y >= (this.y - centerY) / this.currentZoom &&
+			y <= (this.y + centerY) / this.currentZoom
+		);
+	}
+
+	doZoom(factor: number) {
+		this.currentZoom = Math.min(this.MAX_ZOOM, Math.max(this.MIN_ZOOM, this.currentZoom * factor));
+	}
+}
+
+class CanvasControls {
+	private isDragging = false;
+	private dragStart = { x: 0, y: 0 };
+	private lastOffset = { x: 0, y: 0 };
+	private SCROLL_SENSITIVITY = 0.0005;
+
+	constructor(
+		private canvas: HTMLCanvasElement,
+		private camera: CanvasCamera
+	) {
+		this.canvas = canvas;
+		this.camera = camera;
+	}
+
+	attachListeners() {
+		this.canvas.addEventListener('wheel', this.handleWheel.bind(this), { passive: false });
+		this.canvas.addEventListener('mousedown', this.handleMouseDown.bind(this));
+		this.canvas.addEventListener('mousemove', this.handleMouseMove.bind(this));
+		this.canvas.addEventListener('mouseup', this.handleMouseUp.bind(this));
+
+		return () => {
+			this.canvas.removeEventListener('wheel', this.handleWheel.bind(this));
+			this.canvas.removeEventListener('mousedown', this.handleMouseDown.bind(this));
+			this.canvas.removeEventListener('mousemove', this.handleMouseMove.bind(this));
+			this.canvas.removeEventListener('mouseup', this.handleMouseUp.bind(this));
+		};
+	}
+
+	private handleWheel(event: WheelEvent) {
+		event.preventDefault();
+		this.camera.zoom = this.camera.zoom - event.deltaY * this.SCROLL_SENSITIVITY * this.camera.zoom;
+	}
+
+	private handleMouseDown(event: MouseEvent) {
+		this.isDragging = true;
+		this.dragStart.x = event.clientX;
+		this.dragStart.y = event.clientY;
+		this.lastOffset = { x: this.camera.x, y: this.camera.y };
+		this.canvas.style.cursor = 'grabbing';
+	}
+
+	private handleMouseMove(event: MouseEvent) {
+		if (!this.isDragging) return;
+
+		const dx = event.clientX - this.dragStart.x;
+		const dy = event.clientY - this.dragStart.y;
+
+		this.camera.x = this.lastOffset.x + dx / this.camera.zoom;
+		this.camera.y = this.lastOffset.y + dy / this.camera.zoom;
+	}
+
+	private handleMouseUp() {
+		this.isDragging = false;
+		this.canvas.style.cursor = 'grab';
+	}
+}
 
 export default class GraphVisualiser {
 	context: CanvasRenderingContext2D;
@@ -30,17 +167,10 @@ export default class GraphVisualiser {
 	};
 	private isRunning: boolean = false;
 
-	// Camera properties
-	private cameraOffset = { x: 0, y: 0 };
-	private cameraZoom = 0.8;
-	private isDragging = false;
-	private dragStart = { x: 0, y: 0 };
-	private lastOffset = { x: 0, y: 0 };
+	private controls: CanvasControls;
+	camera: CanvasCamera;
 
-	// Zoom constraints
-	private MAX_ZOOM = 5;
-	private MIN_ZOOM = 0.01;
-	private SCROLL_SENSITIVITY = 0.0005;
+	private islands: Node[][] = [];
 
 	constructor(
 		context: CanvasRenderingContext2D,
@@ -49,6 +179,13 @@ export default class GraphVisualiser {
 	) {
 		this.context = context;
 		this.simulation = simulation;
+		this.camera = new CanvasCamera(
+			this.context.canvas,
+			this.context.canvas.width / 2,
+			this.context.canvas.height / 2,
+			3
+		);
+		this.controls = new CanvasControls(this.context.canvas, this.camera);
 
 		if (settings) {
 			this.settings = {
@@ -71,6 +208,39 @@ export default class GraphVisualiser {
 				}
 			};
 		}
+
+		this.populateIslands();
+		this.focusOnIsland(this.islands[0]);
+	}
+
+	setSimulation(graph: ForceGraph) {
+		this.simulation = graph;
+		this.populateIslands();
+		this.focusOnIsland(this.islands[0]);
+	}
+
+	private populateIslands() {
+		let nodes = [...this.simulation.nodes];
+		const islands: Node[][] = [];
+
+		while (nodes.length > 0) {
+			islands.push([]);
+			dfs(nodes, this.simulation.edges, nodes[0], (node) => {
+				nodes = nodes.filter((n) => n.id !== node.id);
+
+				islands[islands.length - 1].push(node);
+			});
+		}
+
+		this.islands = islands;
+	}
+
+	private isNodeOnScreen(node: Node) {
+		return this.camera.isVisible(node.x, node.y);
+	}
+
+	private isIslandOnScreen(island: Node[]) {
+		return island.some((node) => this.isNodeOnScreen(node));
 	}
 
 	private setupHighResolutionCanvas() {
@@ -143,80 +313,35 @@ export default class GraphVisualiser {
 		this.context.closePath();
 	}
 
-	private applyCamera() {
-		const canvas = this.context.canvas;
-		const centerX = canvas.width / 2;
-		const centerY = canvas.height / 2;
-
-		// Move to canvas center
-		this.context.translate(centerX, centerY);
-		// Apply zoom
-		this.context.scale(this.cameraZoom, this.cameraZoom);
-		// Move based on offset
-		this.context.translate(this.cameraOffset.x, this.cameraOffset.y);
-	}
-
-	private resetCamera() {
-		this.context.setTransform(
-			window.devicePixelRatio || 1,
-			0,
-			0,
-			window.devicePixelRatio || 1,
-			0,
-			0
+	private drawIslandIndicator(island: Node[]) {
+		// Draw triangle on screen pointing to the direction of the island
+		const firstNode = island[0];
+		const lastNode = island[island.length - 1];
+		const midX = (firstNode.x + lastNode.x) / 2;
+		const midY = (firstNode.y + lastNode.y) / 2;
+		const angle = Math.atan2(lastNode.y - firstNode.y, lastNode.x - firstNode.x);
+		const triangleSize = 10;
+		const triangleX = midX + Math.cos(angle) * triangleSize;
+		const triangleY = midY + Math.sin(angle) * triangleSize;
+		this.context.beginPath();
+		this.context.moveTo(midX, midY);
+		this.context.lineTo(triangleX, triangleY);
+		this.context.lineTo(
+			midX - Math.cos(angle) * triangleSize,
+			midY - Math.sin(angle) * triangleSize
 		);
+		this.context.closePath();
+		this.context.fillStyle = 'red';
+		this.context.fill();
 	}
 
-	private attachListeners() {
-		const canvas = this.context.canvas;
-
-		canvas.addEventListener('wheel', this.handleWheel.bind(this), { passive: false });
-		canvas.addEventListener('mousedown', this.handleMouseDown.bind(this));
-		canvas.addEventListener('mousemove', this.handleMouseMove.bind(this));
-		canvas.addEventListener('mouseup', this.handleMouseUp.bind(this));
-
-		return () => {
-			canvas.removeEventListener('wheel', this.handleWheel.bind(this));
-			canvas.removeEventListener('mousedown', this.handleMouseDown.bind(this));
-			canvas.removeEventListener('mousemove', this.handleMouseMove.bind(this));
-			canvas.removeEventListener('mouseup', this.handleMouseUp.bind(this));
-		};
-	}
-
-	private handleWheel(event: WheelEvent) {
-		event.preventDefault();
-		const zoom = this.cameraZoom - event.deltaY * this.SCROLL_SENSITIVITY * this.cameraZoom;
-		this.cameraZoom = Math.min(this.MAX_ZOOM, Math.max(this.MIN_ZOOM, zoom));
-	}
-
-	private handleMouseDown(event: MouseEvent) {
-		const canvas = this.context.canvas;
-
-		this.isDragging = true;
-		this.dragStart.x = event.clientX;
-		this.dragStart.y = event.clientY;
-		this.lastOffset = { ...this.cameraOffset };
-		canvas.style.cursor = 'grabbing';
-	}
-
-	private handleMouseMove(event: MouseEvent) {
-		if (!this.isDragging) return;
-
-		const dx = event.clientX - this.dragStart.x;
-		const dy = event.clientY - this.dragStart.y;
-
-		this.cameraOffset.x = this.lastOffset.x + dx / this.cameraZoom;
-		this.cameraOffset.y = this.lastOffset.y + dy / this.cameraZoom;
-	}
-
-	private handleMouseUp() {
-		this.isDragging = false;
-		const canvas = this.context.canvas;
-		canvas.style.cursor = 'grab';
-	}
-
-	zoom(factor: number) {
-		this.cameraZoom = Math.min(this.MAX_ZOOM, Math.max(this.MIN_ZOOM, this.cameraZoom * factor));
+	focusOnIsland(island: Node[]) {
+		const firstNode = island[0];
+		const lastNode = island[island.length - 1];
+		const midX = (firstNode.x + lastNode.x) / 2;
+		const midY = (firstNode.y + lastNode.y) / 2;
+		this.camera.focusOn(midX, midY);
+		this.draw();
 	}
 
 	start() {
@@ -228,13 +353,6 @@ export default class GraphVisualiser {
 
 		this.isRunning = true;
 		this.simulation.tick();
-		// Center onto first node
-		if (this.simulation.nodes.length > 0) {
-			const firstNode = this.simulation.nodes[0];
-			this.cameraOffset.x = -firstNode.x;
-			this.cameraOffset.y = -firstNode.y;
-			this.cameraZoom = 1;
-		}
 
 		const animate = () => {
 			if (this.isRunning) {
@@ -244,7 +362,7 @@ export default class GraphVisualiser {
 		};
 		requestAnimationFrame(animate);
 
-		const cleanupListeners = this.attachListeners();
+		const cleanupListeners = this.controls.attachListeners();
 
 		return () => {
 			this.stop();
@@ -260,12 +378,12 @@ export default class GraphVisualiser {
 	draw() {
 		this.simulation.tick();
 
-		this.resetCamera();
+		this.camera.reset();
 		this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
 		this.context.fillStyle = 'white';
 		this.context.fillRect(0, 0, this.context.canvas.width, this.context.canvas.height);
 
-		this.applyCamera();
+		this.camera.apply();
 
 		this.simulation.edges.forEach((edge) => {
 			const startNode = this.simulation.nodes.find((node) => node.id === edge.source);
@@ -279,6 +397,12 @@ export default class GraphVisualiser {
 			this.drawNode(node);
 		});
 
-		this.resetCamera();
+		for (const island of this.islands) {
+			if (this.isIslandOnScreen(island)) continue;
+
+			this.drawIslandIndicator(island);
+		}
+
+		this.camera.reset();
 	}
 }

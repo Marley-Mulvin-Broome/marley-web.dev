@@ -15,8 +15,8 @@ export default class ForceGraph {
 	constructor(nodes: BaseNode[], edges: Edge[], settings?: Partial<ForceGraphSettings>) {
 		this.nodes = nodes.map((node) => ({
 			...node,
-			x: 1000 * Math.random(),
-			y: 1000 * Math.random(),
+			x: 10 * Math.random(),
+			y: 10 * Math.random(),
 			vx: 0,
 			vy: 0,
 			fx: 0,

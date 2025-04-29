@@ -1,4 +1,5 @@
 import { randomInt, shuffleArray } from '$lib/utility';
+import type { Edge, Node } from './graph.types';
 
 /**
  * Creates a random graph with specified parameters
@@ -86,4 +87,34 @@ export const createRandomGraph = (
 		nodes: nodesArray,
 		edges: edgesArray
 	};
+};
+
+export const dfs = (
+	nodes: Node[],
+	edges: Edge[],
+	startNode: Node,
+	onVisit: (node: Node) => void
+) => {
+	const visited = new Set<string>();
+	const stack: Node[] = [startNode];
+
+	while (stack.length > 0) {
+		const currentNode = stack.pop()!;
+
+		if (visited.has(currentNode.id)) {
+			continue;
+		}
+
+		visited.add(currentNode.id);
+
+		onVisit(currentNode);
+
+		const neighbors = edges
+			.filter((edge) => edge.source === currentNode.id || edge.target === currentNode.id)
+			.map((edge) => (edge.source === currentNode.id ? edge.target : edge.source))
+			.map((id) => nodes.find((node) => node.id === id))
+			.filter((node): node is Node => node !== undefined && !visited.has(node.id));
+
+		stack.push(...neighbors);
+	}
 };

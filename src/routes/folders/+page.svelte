@@ -18,21 +18,12 @@
 />
 
 <section class="flex flex-row flex-wrap gap-x-4 pt-4 px-4">
-	<DesktopIcon
-		name={$t('common.folders.algorithms')}
-		type="folder"
-		href="/folders/algorithms"
+	<DesktopIcon name={$t('common.folders.algorithms')} type="folder" href="/folders/algorithms"
 	></DesktopIcon>
 
-	<DesktopIcon
-		name={$t('common.folders.projects')}
-		type="folder"
-		href="/folders/projects"
+	<DesktopIcon name={$t('common.folders.projects')} type="folder" href="/folders/projects"
 	></DesktopIcon>
 
-	<DesktopIcon
-		name={$t('common.folders.articles')}
-		type="folder"
-		href="/folders/articles"
+	<DesktopIcon name={$t('common.folders.articles')} type="folder" href="/folders/articles"
 	></DesktopIcon>
 </section>

@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { breadcrums } from '$lib';
+	import AlgorithmSettingsSection from '$lib/components/AlgorithmSettingsSection.svelte';
 	import Meta from '$lib/components/Meta.svelte';
 	import ForceGraph from '$lib/graph/ForceGraph';
 	import type { ForceGraphSettings } from '$lib/graph/graph.types';
 	import { createRandomGraph } from '$lib/graph/graph.util';
 	import GraphVisualiser from '$lib/graph/GraphVisualiser';
-	import { copyArray } from '$lib/utility';
-	import { randomInt, shuffleArray } from '$lib/utility/mathUtil';
 	import { windows } from '$lib/windows.svelte';
 	import { onMount } from 'svelte';
 
@@ -14,6 +13,8 @@
 
 	let forceGraph: ForceGraph;
 	let graph: GraphVisualiser;
+
+	let settingsExpanded = $state(true);
 
 	const simulationSettings: Partial<ForceGraphSettings> = {
 		damping: 0.5,
@@ -32,6 +33,17 @@
 		const { nodes, edges } = createRandomGraph(minNodes, maxNodes, minEdges, maxEdges, connected);
 
 		forceGraph = new ForceGraph(nodes, edges, simulationSettings);
+
+		return forceGraph;
+	};
+
+	const handleRandomiseGraph = () => {
+		const minNodes = 4;
+		const maxNodes = 10;
+		const minEdges = 3;
+		const maxEdges = 23;
+
+		graph.setSimulation(randomiseGraph(minNodes, maxNodes, minEdges, maxEdges));
 	};
 
 	onMount(() => {
@@ -75,7 +87,7 @@
 <article class="w-full h-full">
 	<h1 class="text-3xl font-bold my-4 text-center">Graph Algorithms</h1>
 
-	<div class="relative">
+	<div class="relative overflow-clip">
 		<canvas class="w-full h-full object-contain rounded" bind:this={canvas}></canvas>
 
 		<div class="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -85,8 +97,8 @@
 				{#snippet zoomButton(text: string, factor: number)}
 					<button
 						class="text-accent p-2 hover:bg-gray-600"
-						on:click={() => {
-							graph.zoom(factor);
+						onclick={() => {
+							graph.camera.doZoom(factor);
 						}}
 					>
 						{text}
@@ -97,9 +109,29 @@
 				{@render zoomButton('-', 0.8)}
 			</div>
 		</div>
-	</div>
 
-	<div>
-		<h2>Settings</h2>
+		<div
+			class="absolute left-4 top-4 bg-primary rounded-md p-4 data-[expanded=false]:-translate-x-full transition-transform duration-300"
+			data-expanded={settingsExpanded}
+		>
+			<h2 class="text-2xl font-bold mb-5">Settings</h2>
+
+			<AlgorithmSettingsSection>
+				{#snippet title()}
+					Nodes & Edges
+				{/snippet}
+
+				<button onclick={handleRandomiseGraph}> Generate Random Graph </button>
+			</AlgorithmSettingsSection>
+
+			<button
+				class="bg-primary text-accent p-2 rounded-md mt-4 absolute top-1/2 translate-x-full -translate-y-1/2 -right-1"
+				onclick={() => {
+					settingsExpanded = !settingsExpanded;
+				}}
+			>
+				-
+			</button>
+		</div>
 	</div>
 </article>
