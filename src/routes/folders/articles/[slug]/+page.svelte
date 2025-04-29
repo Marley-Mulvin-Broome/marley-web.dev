@@ -39,7 +39,7 @@
 />
 
 <article
-	class="prose px-2 lg:px-6 py-4 overflow-y-scroll max-h-full flex flex-col justify-center self-center w-full"
+	class="prose px-2 lg:px-6 py-4 overflow-y-auto max-h-full flex flex-col justify-center self-center w-full"
 >
 	<h1 class="text-3xl font-bold mb-4">{article.meta.title}</h1>
 

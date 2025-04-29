@@ -28,6 +28,13 @@ export const windows: WindowsData = $state({
 			icon: 'mail',
 			title: 'Contact',
 			pin: true
+		},
+		{
+			href: '/folders/algorithms',
+			match: /^\/folders\/\/algorithms/,
+			icon: 'brain',
+			title: 'Algorithms',
+			pin: true
 		}
 	],
 	breadcrums: [],

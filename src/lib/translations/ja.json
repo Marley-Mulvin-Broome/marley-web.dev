@@ -20,6 +20,11 @@
 			"image": "/marley.png"
 		}
 	},
+	"folders": {
+		"algorithms": "アルゴリズム",
+		"projects": "プロジェクト",
+		"articles": "記事"
+	},
 	"home": {
 		"title": "Hi, I'm Marley",
 		"description": "大阪を拠点としたソフトウェアエンジニア",

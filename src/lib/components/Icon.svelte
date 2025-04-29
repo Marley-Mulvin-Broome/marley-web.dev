@@ -13,8 +13,8 @@
 		overwriteColours = false,
 		overwriteDimensions = false,
 		class: classes = '',
-		width = 24,
-		height = 24
+		width,
+		height
 	}: Props = $props();
 
 	const getSvgContent = async (icon: string) => {

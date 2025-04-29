@@ -33,7 +33,7 @@
 		{@render children?.()}
 	{/if}
 
-	<span class="font-semibold text-xl">
+	<span class="font-semibold text-xl overflow-hidden text-ellipsis whitespace-nowrap">
 		{name}
 	</span>
 </a>

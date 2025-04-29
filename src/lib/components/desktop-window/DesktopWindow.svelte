@@ -35,7 +35,7 @@
 		{@render sidebar?.()}
 	</div>
 
-	<div class="flex flex-col flex-1 overflow-y-scroll lg:max-h-[600px] bg-primary">
+	<div class="flex flex-col flex-1 overflow-y-auto lg:max-h-[600px] bg-primary">
 		<div class="w-full px-4 py-2 border-b border-gray-600 bg-primary-light">
 			<WindowBreadcrums {breadcrums} />
 		</div>

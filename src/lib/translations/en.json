@@ -20,6 +20,11 @@
 			"image": "/marley.png"
 		}
 	},
+	"folders": {
+		"algorithms": "Algorithms",
+		"projects": "Projects",
+		"articles": "Articles"
+	},
 	"home": {
 		"title": "Hi, I'm Marley",
 		"description": "Software Engineer & Sigma Male based in Osaka, Japan",

@@ -10,7 +10,7 @@ export interface SearchIndexItem {
 	type: SearchIndexItemType;
 }
 
-export type BreadcrumKey = 'projects' | 'folders' | 'articles' | 'about' | 'contact';
+export type BreadcrumKey = 'projects' | 'folders' | 'articles' | 'about' | 'contact' | 'algorithms';
 
 export interface ContactBody {
 	name: string;

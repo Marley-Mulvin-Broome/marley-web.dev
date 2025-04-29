@@ -38,5 +38,12 @@ export const breadcrums: Record<BreadcrumKey, Breadcrum[]> = {
 			title: 'Contact',
 			href: '/folders/contact'
 		}
+	],
+	algorithms: [
+		foldersBreadcrum,
+		{
+			title: 'Algorithms',
+			href: '/folders/algorithms'
+		}
 	]
 };

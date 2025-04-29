@@ -13,7 +13,7 @@
 	});
 </script>
 
-<article class="px-2 lg:px-6 py-4 overflow-y-scroll max-h-full">
+<article class="px-2 lg:px-6 py-4 overflow-y-auto max-h-full">
 	<h1 class="text-3xl font-bold mt-6 mb-8">
 		I <GradientText tag="em" class="pr-1 from-accent to-violet-500">try</GradientText> to make things
 		that are useful.
